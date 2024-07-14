@@ -1,0 +1,25 @@
+//-- '\student3Comments\index.pug'
+doctype html
+html
+  head
+    title Comments Section
+    link(rel='stylesheet', href='/css/student3.css')
+  body
+    header
+      h1 Comments Section
+    main
+      .container
+        form(action='/add', method='POST')
+          textarea(name='commentItem', placeholder='Enter your comment here...', rows='4', cols='50')
+          button(type='submit') Add Comment
+        ul.comment-list
+          each comment in comments
+            li.comment-item
+              span.comment-text #{comment.comment}
+              button.edit-btn(data-id=comment.id) Edit
+              button.delete-btn(data-id=comment.id) Delete
+        button#delete-all-btn Delete All Comments
+        a(href='/student3') Go Back
+    footer
+      p &copy; 2024 Fict University Astrobiology Department
+    script(src='/js/student3.js')
